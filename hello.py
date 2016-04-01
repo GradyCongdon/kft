@@ -2,7 +2,7 @@ import os
 from flask import Flask, url_for, render_template, request, redirect, session
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = '/home/ec2-user/www/printer/uploads/'
+UPLOAD_FOLDER = '/home/ec2-user/www/kft/uploads/'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)
