@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Statistics</h1>
+    {% for entries in stats %}
+    <div id="stats-list">
+      {% for entry in entries %}
+      <div class="stat-entry">
+        <div class="category">{{entry[0]}}</div>
+        <div class="count">{{entry[1]}}</div>
+      </div>
+      {% endfor %}
+    {% endfor %}
+    </div>
+  </form>
+{% endblock %}

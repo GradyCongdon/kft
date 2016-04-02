@@ -1,2 +1,4 @@
 uploads/
 *.swp
+*.pyc
+*.csv

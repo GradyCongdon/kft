@@ -1,12 +1,15 @@
 import os
+from parser import parse
 from flask import Flask, url_for, render_template, request, redirect, session
 from werkzeug import secure_filename
 
 UPLOAD_FOLDER = '/home/ec2-user/www/kft/uploads/'
+PARSED_FOLDER = '/home/ec2-user/www/kft/logs/'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['PARSED_FOLDER'] = PARSED_FOLDER
 app.secret_key ='\xf0e\x07\nT\x9e\x92\x16uWh\xb1\xb9\x8f\xca\xb0\xe3\xd2@\xef\x1e\x03\xb1M'
 
 @app.route('/hello')
@@ -28,13 +31,16 @@ def upload():
         if file and allowed_file(file.filename):
             filename =  secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('parsed_log', filename=filename))
+            return redirect(url_for('parse_log', filename=filename))
     else:
         return render_template('upload.html')
 
-@app.route('/logs/<filename>')
-def parsed_log(filename):
-    return "good job"
+@app.route('/stats/<filename>')
+def parse_log(filename):
+    fin = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    fout = os.path.join(app.config['PARSED_FOLDER'], filename)
+    stats = parse(fin, fout)
+    return render_template('stats.html', filename=filename, stats=stats)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS

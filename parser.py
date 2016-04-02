@@ -31,7 +31,4 @@ matches.group('printer'),
 matches.group('port')[:-2],
 size,
 pages])
-        print(u.most_common(10))
-        print(p.most_common(10))
-        print(us.most_common(10))
-parse('uploads/march11log.csv', "uploads/fout.csv")
+            return {'user': u.most_common(10), 'printer': p.most_common(10), 'userbytes': us.most_common(10)}
