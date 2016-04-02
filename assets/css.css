@@ -5,13 +5,76 @@ html,  body{
   width: 100%;
   height: 100%;
   background: tomato;
+  font-family: 'Open sans', sans-serif;
   color: white;
 }
 
+body {
+  width: 60%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    width: 100%;
+  }
+}
+
 h1 {
-  color: #86dfe2;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  font-size: 3.5em;
+  text-align: center;
+  margin: 1%;
+  border-bottom: 1px solid white;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 form {
   padding: 1% 4%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.buttons {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 0 5px 1px;
+    padding: 9px 18px;
+    min-width: 135px;
+    min-height: 25px;
+		width: 25%;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    box-shadow: 0 0 8px 2px #ffa693;
+    font-size: 1.3em;
+    background-color: white;
+    color: tomato;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+#file-input {
+  display: none;
+}
+
+.file-list {
+  display: block;
+  list-style-type: none;
+  font-size: 1.3em;
+
+}
+  
+@media screen and (max-width: 600px) {
+  #file-list {
+    order: 3;
+  }
 }

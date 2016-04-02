@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key ='\xf0e\x07\nT\x9e\x92\x16uWh\xb1\xb9\x8f\xca\xb0\xe3\xd2@\xef\x1e\x03\xb1M'
 
-@app.route('/')
+@app.route('/hello')
 def hello():
     if 'user' in session:
         return "heyyyyy %s" % session['user']
@@ -21,7 +21,7 @@ def greet(name):
     session['user'] = name
     return render_template('greet.html', name=name)
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
         file = request.files['files']
