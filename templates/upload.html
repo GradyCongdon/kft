@@ -2,12 +2,14 @@
 {% block body %}
   <h1>Upload logs to be parsed</h1>
   <form action="/" method="POST" enctype="multipart/form-data">
-    <input id="file-input" type="file" name="files">
-    <input class="buttons" id="add-files" type="button" value="add files">
     <ul id="file-list" class="file-list">
       <li class="filename">turtles.csv</li>
       <li class="filename">cambridge audio.csv</li>
     </ul>
-    <input class="buttons" id="submit" type="submit" value="submit">
+    <div id="side">
+      <input id="file-input" type="file" name="files">
+      <input class="buttons" id="add-files" type="button" value="add files">
+      <input class="buttons" id="submit" type="submit" value="submit">
+    </div>
   </form>
 {% endblock %}
