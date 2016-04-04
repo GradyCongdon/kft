@@ -1,6 +1,7 @@
 'use strict'
 
 import gulp from 'gulp'
+import watch from 'gulp-watch'
 import babel from 'gulp-babel'
 import jshint from 'gulp-jshint'
 import sourcemaps from 'gulp-sourcemaps'
@@ -23,6 +24,11 @@ const files = {
 gulp.task('default', ['js', 'sass'], () => {
 });
 
+gulp.task('watch', () => {
+  gulp.watch('./src/js.js');
+  gulp.watch('./src/scss.scss');
+});
+
 gulp.task('test', () => {
   console.log('ok!')
 });
@@ -31,8 +37,7 @@ gulp.task('js', () => {
   return gulp.src('./src/js.js')
     .pipe(sourcemaps.init())
     .pipe(babel({presets:['es2015']}))
-    .pipe(sourcemaps.write(dirs.dest))
-    .pipe(gulp.dest('./assets/js.js'));
+    .pipe(gulp.dest('./assets'));
 });
 
 gulp.task('sass', () => {
