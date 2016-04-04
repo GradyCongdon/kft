@@ -1,15 +1,24 @@
 'use strict';
 
+var nameTimer = void 0;
+
 function triggerFileInput() {
   var fileInput = document.getElementById("file-input");
-  console.log("buttmunch");
   fileInput.click();
+  nameTimer = setInterval(displayFileName, 500);
 }
 
 function displayFileName() {
   var fileInput = document.getElementById("file-input");
-  var upload = document.createElement('li');
-  upload.innerHTML = fileInput.value;
-  document.getElementById('files-list').appendChild(upload);
+  if (fileInput.value != '') {
+    var upload = document.createElement('li');
+    upload.innerHTML = fileInput.value;
+    document.getElementById('file-list').appendChild(upload);
+    window.clearTimeout(nameTimer);
+  }
+}
+
+function fig() {
+  return document.getElementById("file-input");
 }
 document.getElementById("add-files").addEventListener("click", triggerFileInput);

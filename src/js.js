@@ -1,21 +1,25 @@
 'use strict'
 
-let nameTimer = false
+let nameTimer 
 
 function triggerFileInput() {
   let fileInput = document.getElementById("file-input")
   fileInput.click()
-  nameTimer = setTimeout('displayFileName', 800)
+  nameTimer = setInterval(displayFileName, 500)
 }
 
 function displayFileName() {
   let fileInput = document.getElementById("file-input")
-  while (fileInput.value != undefined) {
+  if (fileInput.value != '') {
     let upload = document.createElement('li')
     upload.innerHTML = fileInput.value
-    document.getElementById('files-list').appendChild(upload) 
+    document.getElementById('file-list').appendChild(upload) 
     window.clearTimeout(nameTimer)
   }
+}
+
+function fig() {
+  return document.getElementById("file-input")
 }
 document.getElementById("add-files").addEventListener("click", triggerFileInput);
 

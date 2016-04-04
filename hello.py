@@ -3,8 +3,9 @@ from parser import parse
 from flask import Flask, url_for, render_template, request, redirect, session
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = '/home/ec2-user/www/kft/uploads/'
-PARSED_FOLDER = '/home/ec2-user/www/kft/logs/'
+#UPLOAD_FOLDER = '/home/ec2-user/www/printer/uploads/'
+UPLOAD_FOLDER = '/home/g/www/printer/uploads/'
+PARSED_FOLDER = '/home/ec2-user/www/printer/logs/'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)
@@ -31,7 +32,10 @@ def upload():
         if file and allowed_file(file.filename):
             filename =  secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('parse_log', filename=filename))
+            #return redirect(url_for('parse_log', filename=filename))
+            return redirect(url_for('greet', name='puppy'))
+        else:
+            return redirect(url_for('hello'))
     else:
         return render_template('upload.html')
 
