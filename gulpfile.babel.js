@@ -28,11 +28,11 @@ gulp.task('test', () => {
 });
 
 gulp.task('js', () => {
-  return gulp.src(dirs.src+files.js)
+  return gulp.src('./src/js.js')
     .pipe(sourcemaps.init())
     .pipe(babel({presets:['es2015']}))
     .pipe(sourcemaps.write(dirs.dest))
-    .pipe(gulp.dest(dirs.dest));
+    .pipe(gulp.dest('./assets/js.js'));
 });
 
 gulp.task('sass', () => {
