@@ -2,9 +2,9 @@ $mainColor: white;
 $textColor: black;
 $fontMain: 'Open sans', sans-serif;
 
+@import 'reset';
+
 html,  body{
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -72,6 +72,10 @@ form {
 
 .warning {
   color: orange;
+}
+
+.error {
+  color: tomato;
 }
 .csv-warning {
   font-size: 0.8em;

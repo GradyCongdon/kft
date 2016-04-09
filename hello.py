@@ -3,10 +3,9 @@ from parser import parse
 from flask import Flask, url_for, render_template, request, redirect, session, flash
 from werkzeug import secure_filename
 
-#UPLOAD_FOLDER = '/home/ec2-user/www/printer/uploads/'
-#UPLOAD_FOLDER = '/home/g/www/printer/uploads/'
-UPLOAD_FOLDER = '/Users/grady/code/kft/uploads/'
-PARSED_FOLDER = '/home/ec2-user/www/printer/logs/'
+BASE = os.getcwd()
+UPLOAD_FOLDER = BASE+'/uploads/'
+PARSED_FOLDER = BASE+'/logs/'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)
@@ -44,8 +43,8 @@ def upload():
 def parse_log(filename):
     fin = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     fout = os.path.join(app.config['PARSED_FOLDER'], filename)
-    stats = parse(fin, fout)
-    return render_template('stats.html', filename=filename, stats=stats)
+    users, printers, byte = parse(fin, fout)
+    return render_template('stats.html', filename=filename, stats=users)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS

@@ -17,9 +17,7 @@ function displayFileName() {
     upload.classList.add('filename')
     document.getElementById('file-list').appendChild(upload) 
     window.clearTimeout(nameTimer)
-    console.log(upload.innerHTML.slice(-3))
     if (upload.innerHTML.slice(-3) != 'csv') {
-      console.log(`no`)
       let warning = document.createElement('span')
       warning.innerHTML = `Only .csv allowed`
       warning.classList.add('warning')

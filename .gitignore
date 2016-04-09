@@ -1,5 +1,6 @@
 uploads/
 node_modules/
+logs/
 *.swp
 *.pyc
 *.csv
