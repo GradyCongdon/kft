@@ -1,10 +1,11 @@
 import os
 from parser import parse
-from flask import Flask, url_for, render_template, request, redirect, session
+from flask import Flask, url_for, render_template, request, redirect, session, flash
 from werkzeug import secure_filename
 
 #UPLOAD_FOLDER = '/home/ec2-user/www/printer/uploads/'
-UPLOAD_FOLDER = '/home/g/www/printer/uploads/'
+#UPLOAD_FOLDER = '/home/g/www/printer/uploads/'
+UPLOAD_FOLDER = '/Users/grady/code/kft/uploads/'
 PARSED_FOLDER = '/home/ec2-user/www/printer/logs/'
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -32,10 +33,10 @@ def upload():
         if file and allowed_file(file.filename):
             filename =  secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #return redirect(url_for('parse_log', filename=filename))
-            return redirect(url_for('greet', name='puppy'))
+            return redirect(url_for('parse_log', filename=filename))
         else:
-            return redirect(url_for('hello'))
+          flash('Upload Error - filetype not allowed')
+          return redirect(url_for('upload'))
     else:
         return render_template('upload.html')
 

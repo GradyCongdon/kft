@@ -22,6 +22,7 @@ function displayFileName() {
       console.log(`no`)
       let warning = document.createElement('span')
       warning.innerHTML = `Only .csv allowed`
+      warning.classList.add('warning')
       warning.classList.add('csv-warning')
       upload.appendChild(warning) 
     }

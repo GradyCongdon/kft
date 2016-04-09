@@ -70,9 +70,18 @@ form {
     box-shadow: 0 0 8px 2px lighten($textColor, 15%)
 }
 
-.csv-warning {
+.warning {
   color: orange;
-  padding-left: 3%
+}
+.csv-warning {
+  font-size: 0.8em;
+    &:before {
+      content: "  ";
+    }
+}
+
+.filename {
+  font-weight: 800;
 }
 
 #file-input {

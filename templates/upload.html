@@ -3,6 +3,13 @@
   <h1>Upload logs to be parsed</h1>
   <form action="/" method="POST" enctype="multipart/form-data">
     <ul id="file-list" class="file-list">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <li class="filename warning">{{ message }} </li>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     </ul>
     <div id="side">
       <input id="file-input" type="file" name="files">
