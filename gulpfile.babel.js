@@ -22,11 +22,8 @@ const files = {
 };
 
 gulp.task('default', ['js', 'sass'], () => {
-});
-
-gulp.task('watch', () => {
-  gulp.watch('./src/js.js');
-  gulp.watch('./src/scss.scss');
+  gulp.watch('./src/js.js', ['js']);
+  gulp.watch('./src/scss.scss', ['sass'])
 });
 
 gulp.task('test', () => {

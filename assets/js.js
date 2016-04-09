@@ -1,24 +1,31 @@
 'use strict';
 
 var nameTimer = void 0;
+var fig = document.getElementById("file-input");
 
 function triggerFileInput() {
   var fileInput = document.getElementById("file-input");
   fileInput.click();
-  nameTimer = setInterval(displayFileName, 500);
+  nameTimer = setInterval(displayFileName, 300);
 }
 
 function displayFileName() {
   var fileInput = document.getElementById("file-input");
   if (fileInput.value != '') {
     var upload = document.createElement('li');
-    upload.innerHTML = fileInput.value;
+    upload.innerHTML = fileInput.value.replace(/C:\\fakepath\\/, '');
+    upload.classList.add('filename');
     document.getElementById('file-list').appendChild(upload);
     window.clearTimeout(nameTimer);
+    console.log(upload.innerHTML.slice(-3));
+    if (upload.innerHTML.slice(-3) != 'csv') {
+      console.log("no");
+      var warning = document.createElement('span');
+      warning.innerHTML = "Only .csv allowed";
+      warning.classList.add('csv-warning');
+      upload.appendChild(warning);
+    }
   }
 }
 
-function fig() {
-  return document.getElementById("file-input");
-}
 document.getElementById("add-files").addEventListener("click", triggerFileInput);
