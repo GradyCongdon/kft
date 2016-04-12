@@ -20,8 +20,7 @@ function displayFileName() {
     if (upload.innerHTML.slice(-3) != 'csv') {
       let warning = document.createElement('span')
       warning.innerHTML = `Only .csv allowed`
-      warning.classList.add('warning')
-      warning.classList.add('csv-warning')
+      warning.classList.add('warning','csv-warning')
       upload.appendChild(warning) 
     }
   }

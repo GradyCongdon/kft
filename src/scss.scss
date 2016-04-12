@@ -106,6 +106,34 @@ ul {
 .file-list {
   width: 100%;
 }
+
+.stats {
+}
+
+.type-list {
+  padding-bottom: 2%;
+  h2 {
+    font-size: 1.5em;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+}
+
+.stat-entry {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .category {
+    font-size: 1.1em;
+    padding: 0 1%;
+  }
+  .count {
+    padding: 0 1%;
+  }
+  &:nth-child(even) {
+    background: #ddd;
+  }
+}
   
 @media screen and (max-width: 600px) {
   .file-list {

@@ -43,8 +43,8 @@ def upload():
 def parse_log(filename):
     fin = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     fout = os.path.join(app.config['PARSED_FOLDER'], filename)
-    users, printers, byte = parse(fin, fout)
-    return render_template('stats.html', filename=filename, stats=users)
+    stats = parse(fin, fout)
+    return render_template('stats.html', filename=filename, stats=stats)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS

@@ -18,7 +18,10 @@ def parse(filein, fileout):
     us = Counter()
     p = Counter()
     for row in reader:
-      info = row[None][0]
+      try:
+        info = row[None][0]
+      except(KeyError):
+        break
       matches = exp.search(info)
       pages = int(matches.group('pages'))
       size = int(matches.group('size'))
@@ -26,5 +29,5 @@ def parse(filein, fileout):
       us[matches.group('username')] += size
       p[matches.group('printer')] += pages
       writer.writerow([matches.group('filename'), matches.group('username'), matches.group('computer'), matches.group('printer'), matches.group('port')[:-2], size, pages])
-    pickle.dump(u.most_common(10), open(fileout+"_stats.p", "wb"))
-    return ["a","b","c"]
+    pickle.dump(u.most_common(10), open(fileout[:-4]+"_stats.p", "wb"))
+    return [u.most_common(10),p.most_common(10),us.most_common(10)]
